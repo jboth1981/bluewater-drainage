@@ -17,15 +17,26 @@ export default function Home() {
       />
       <StructuredData />
 
-      {/* Hero */}
-      <section className="relative bg-blue-primary text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      {/* Hero with video background */}
+      <section className="relative bg-blue-primary text-white overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-poster.webp"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/images/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-blue-primary/70" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-28 md:py-40">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-extrabold tracking-tight uppercase md:text-7xl">
               Bluewater
               <span className="block text-orange">Farm Drainage</span>
             </h1>
-            <p className="mt-6 text-xl text-white/80 max-w-2xl">
+            <p className="mt-6 text-xl text-white/90 max-w-2xl">
               {siteConfig.tagline}. Professional tile drainage and land improvement
               services across Ontario's best farmland.
             </p>
@@ -77,7 +88,11 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <ImagePlaceholder label="Field drainage photo — before/after showing yield improvement" aspectRatio="aspect-square" />
+            <img
+              src="/images/byron-plow.webp"
+              alt="Byron Bothwell with the Bluewater Farm Drainage tile plow and family"
+              className="rounded-lg object-cover aspect-square"
+            />
           </div>
         </div>
       </section>

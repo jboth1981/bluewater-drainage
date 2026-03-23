@@ -1,6 +1,5 @@
 import Button from '../components/ui/Button'
 import SectionHeading from '../components/ui/SectionHeading'
-import ImagePlaceholder from '../components/ui/ImagePlaceholder'
 import SEOHead from '../components/seo/SEOHead'
 import StructuredData from '../components/seo/StructuredData'
 
@@ -51,7 +50,11 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <ImagePlaceholder label="Photo of Byron / the Bluewater team" aspectRatio="aspect-[4/5]" />
+            <img
+              src="/images/byron-family.webp"
+              alt="Byron Bothwell and family"
+              className="rounded-lg object-cover aspect-[4/5]"
+            />
           </div>
         </div>
       </section>
@@ -65,12 +68,16 @@ export default function About() {
           />
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { label: 'Tile plow in action', desc: 'GPS-guided tile plow for precise installation at grade' },
-              { label: 'Excavator on site', desc: 'Heavy excavation for ditches, outlets, and land clearing' },
-              { label: 'GPS survey equipment', desc: 'RTK GPS technology for centimetre-accurate surveying' },
+              { src: '/images/byron-plow.webp', alt: 'Bron 550 tile plow on a job site', desc: 'Bron 550 GPS-guided tile plow for precise installation at grade' },
+              { src: '/images/gps-trimble.webp', alt: 'Trimble GPS display inside the tile plow cab', desc: 'Trimble GPS guidance system for centimetre-accurate drainage installation' },
+              { src: '/images/kids-plow.webp', alt: 'Bron 550 tile plow', desc: 'Heavy-duty tracked tile plow built for Ontario field conditions' },
             ].map((item) => (
-              <div key={item.label}>
-                <ImagePlaceholder label={item.label} />
+              <div key={item.alt}>
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="rounded-lg object-cover aspect-video w-full"
+                />
                 <p className="mt-3 text-sm text-gray-medium">{item.desc}</p>
               </div>
             ))}
@@ -78,8 +85,29 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* The Bluewater Crew */}
       <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <img
+              src="/images/job-site-dog.webp"
+              alt="Job site supervisor on a Bluewater drainage project"
+              className="rounded-lg object-cover aspect-video w-full"
+            />
+            <div>
+              <SectionHeading title="Part of the Crew" centered={false} />
+              <p className="text-gray-dark">
+                Every good job site needs a supervisor. Ours just happens to have four
+                legs. The Bluewater team is a family operation — and that includes
+                everyone who shows up to the field.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-20 bg-gray-light/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="How We Work"

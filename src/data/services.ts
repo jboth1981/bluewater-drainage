@@ -4,12 +4,14 @@ export interface Service {
   shortDescription: string
   description: string
   benefits: string[]
+  image?: string
 }
 
 export const services: Service[] = [
   {
     id: 'tile-drainage',
     title: 'Tile Drainage',
+    image: '/images/byron-plow.webp',
     shortDescription: 'Professional systematic and random tile drainage installation to improve field productivity.',
     description:
       'Tile drainage is the most effective way to remove excess water from agricultural land. We install both systematic and random tile drainage systems using GPS-guided equipment, ensuring precise grade and optimal water removal. Properly drained fields dry faster in spring, reduce crop stress during wet periods, and consistently produce higher yields.',
@@ -24,6 +26,7 @@ export const services: Service[] = [
   {
     id: 'gps-survey-design',
     title: 'GPS Survey & Design',
+    image: '/images/gps-trimble.webp',
     shortDescription: 'Precision GPS surveying and drainage system design for optimal water management.',
     description:
       'Every successful drainage project starts with accurate survey data. We use RTK GPS technology to map your fields with centimetre-level precision, identifying low spots, natural drainage patterns, and optimal tile placement. Our designs maximize water removal efficiency while minimizing installation costs.',

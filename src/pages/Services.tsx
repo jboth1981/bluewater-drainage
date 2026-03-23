@@ -64,7 +64,15 @@ export default function Services() {
                   <Button href="/contact">Get a Free Quote</Button>
                 </div>
               </div>
-              <ImagePlaceholder label={`${service.title} — project photo`} />
+              {service.image ? (
+                <img
+                  src={service.image}
+                  alt={`${service.title} — Bluewater Farm Drainage`}
+                  className="rounded-lg object-cover aspect-video w-full"
+                />
+              ) : (
+                <ImagePlaceholder label={`${service.title} — project photo`} />
+              )}
             </div>
           </div>
         </section>
