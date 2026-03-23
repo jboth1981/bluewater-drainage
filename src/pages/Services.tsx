@@ -6,6 +6,8 @@ import StructuredData from '../components/seo/StructuredData'
 import { useScrollToAnchor } from '../hooks/useScrollToAnchor'
 import { services } from '../data/services'
 
+const base = import.meta.env.BASE_URL
+
 export default function Services() {
   useScrollToAnchor()
 
@@ -66,7 +68,7 @@ export default function Services() {
               </div>
               {service.image ? (
                 <img
-                  src={service.image}
+                  src={`${base}${service.image}`}
                   alt={`${service.title} — Bluewater Farm Drainage`}
                   className="rounded-lg object-cover aspect-video w-full"
                 />

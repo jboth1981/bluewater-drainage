@@ -3,6 +3,8 @@ import SectionHeading from '../components/ui/SectionHeading'
 import SEOHead from '../components/seo/SEOHead'
 import StructuredData from '../components/seo/StructuredData'
 
+const base = import.meta.env.BASE_URL
+
 export default function About() {
   return (
     <>
@@ -51,7 +53,7 @@ export default function About() {
               </div>
             </div>
             <img
-              src="/images/byron-family.webp"
+              src={`${base}images/byron-family.webp`}
               alt="Byron Bothwell and family"
               className="rounded-lg object-cover aspect-[4/5]"
             />
@@ -68,9 +70,9 @@ export default function About() {
           />
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { src: '/images/byron-plow.webp', alt: 'Bron 550 tile plow on a job site', desc: 'Bron 550 GPS-guided tile plow for precise installation at grade' },
-              { src: '/images/gps-trimble.webp', alt: 'Trimble GPS display inside the tile plow cab', desc: 'Trimble GPS guidance system for centimetre-accurate drainage installation' },
-              { src: '/images/kids-plow.webp', alt: 'Bron 550 tile plow', desc: 'Heavy-duty tracked tile plow built for Ontario field conditions' },
+              { src: `${base}images/byron-plow.webp`, alt: 'Bron 550 tile plow on a job site', desc: 'Bron 550 GPS-guided tile plow for precise installation at grade' },
+              { src: `${base}images/gps-trimble.webp`, alt: 'Trimble GPS display inside the tile plow cab', desc: 'Trimble GPS guidance system for centimetre-accurate drainage installation' },
+              { src: `${base}images/kids-plow.webp`, alt: 'Bron 550 tile plow', desc: 'Heavy-duty tracked tile plow built for Ontario field conditions' },
             ].map((item) => (
               <div key={item.alt}>
                 <img
@@ -90,7 +92,7 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <img
-              src="/images/job-site-dog.webp"
+              src={`${base}images/job-site-dog.webp`}
               alt="Job site supervisor on a Bluewater drainage project"
               className="rounded-lg object-cover aspect-video w-full"
             />

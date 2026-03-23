@@ -8,6 +8,8 @@ import StructuredData from '../components/seo/StructuredData'
 import { siteConfig } from '../data/siteConfig'
 import { services } from '../data/services'
 
+const base = import.meta.env.BASE_URL
+
 export default function Home() {
   return (
     <>
@@ -24,10 +26,10 @@ export default function Home() {
           muted
           loop
           playsInline
-          poster="/images/hero-poster.webp"
+          poster={`${base}images/hero-poster.webp`}
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/images/hero-video.mp4" type="video/mp4" />
+          <source src={`${base}images/hero-video.mp4`} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-blue-primary/70" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-28 md:py-40">
@@ -89,7 +91,7 @@ export default function Home() {
               </div>
             </div>
             <img
-              src="/images/byron-plow.webp"
+              src={`${base}images/byron-plow.webp`}
               alt="Byron Bothwell with the Bluewater Farm Drainage tile plow and family"
               className="rounded-lg object-cover aspect-square"
             />
