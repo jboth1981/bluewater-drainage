@@ -34,16 +34,29 @@ export default function About() {
               <SectionHeading title="Our Story" centered={false} />
               <div className="prose prose-lg text-gray-dark space-y-4">
                 <p>
-                  <strong>Placeholder — Byron's story will go here.</strong> This section
-                  will cover Byron Bothwell's background, how he got into tile drainage,
-                  and the family connection to farming and the land.
+                  <strong>Placeholder — Byron's story will go here.</strong>
                 </p>
                 <p>
-                  The Bothwell family has deep roots in Ontario agriculture. George
-                  Bothwell originally obtained accreditation and acquired the tile plow
-                  that started it all. Today, Bluewater Farm Drainage continues that
-                  tradition with modern GPS technology and a commitment to doing the job
-                  right.
+                  Byron Bothwell's path to tile drainage began, as most great careers
+                  do, with a near-death experience involving an electric fence.
+                </p>
+                <p>
+                  As a kid on the family farm, Byron grabbed hold of a fence he didn't
+                  know was live. The shock hit him so hard he was convinced he'd been
+                  thrown from a helicopter. As the ground rushed up to meet him and his
+                  life flashed before his eyes, he didn't see a white light — he saw a
+                  Bron 550 tile plow, tracks churning through heavy clay, GPS locked on
+                  grade, laying pipe at a perfect 0.1% slope.
+                </p>
+                <p>
+                  He woke up in the grass, looked up at the sky, and said: "I'm going
+                  to drain fields for a living."
+                </p>
+                <p>
+                  The rest is history. George Bothwell originally obtained accreditation
+                  and acquired the tile plow that started it all. Today, Bluewater Farm
+                  Drainage continues that tradition with modern GPS technology and a
+                  commitment to doing the job right.
                 </p>
                 <p>
                   Based out of the Owen Sound area, we serve farmers across Grey Bruce,
