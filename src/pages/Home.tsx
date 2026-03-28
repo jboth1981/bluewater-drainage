@@ -19,9 +19,59 @@ export default function Home() {
       />
       <StructuredData />
 
-      {/* TEST BANNER - remove after verifying push access */}
-      <div style={{ background: '#22c55e', color: 'white', textAlign: 'center', padding: '20px 12px 30px', fontWeight: 'bold', borderRadius: '0 0 50% 50%' }}>
-        Hello from Byron! Bluewater Drainage site updates coming soon.
+      {/* Drainage tile banner */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <svg
+          viewBox="0 0 1440 90"
+          preserveAspectRatio="none"
+          style={{ width: '100%', height: '80px', display: 'block' }}
+        >
+          <defs>
+            {/* Corrugated drainage tile pattern — alternating ribs */}
+            <pattern id="tileRibs" x="0" y="0" width="16" height="90" patternUnits="userSpaceOnUse">
+              {/* Deep groove */}
+              <rect x="0" y="0" width="6" height="90" fill="#1a1a1a" />
+              {/* Raised rib with highlight */}
+              <rect x="6" y="0" width="10" height="90" fill="#2d2d2d" />
+              {/* Subtle shine on rib edge */}
+              <rect x="6" y="0" width="2" height="90" fill="#3a3a3a" />
+              {/* Perforations — small holes in the grooves */}
+              <circle cx="3" cy="30" r="1.2" fill="#111" />
+              <circle cx="3" cy="60" r="1.2" fill="#111" />
+            </pattern>
+            {/* Curved clip for the swooping bottom edge */}
+            <clipPath id="swoopClip">
+              <path d="M0,0 L1440,0 L1440,55 Q720,100 0,55 Z" />
+            </clipPath>
+          </defs>
+          {/* Black tile background with ribs, clipped to swoop shape */}
+          <g clipPath="url(#swoopClip)">
+            <rect width="1440" height="90" fill="url(#tileRibs)" />
+            {/* Subtle top highlight like light catching the pipe */}
+            <rect width="1440" height="2" fill="#444" opacity="0.4" />
+            {/* Subtle bottom shadow for depth */}
+            <line x1="0" y1="54" x2="1440" y2="54" stroke="#000" strokeWidth="1.5" opacity="0.5" />
+          </g>
+        </svg>
+        {/* Banner text overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingBottom: '15px',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '0.95rem',
+          textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+          letterSpacing: '0.5px',
+        }}>
+          Hello from Byron! Bluewater Drainage site updates coming soon.
+        </div>
       </div>
 
       {/* Hero with video background */}
