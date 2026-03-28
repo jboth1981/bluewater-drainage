@@ -20,7 +20,7 @@ export default function Home() {
       <StructuredData />
 
       {/* TEST BANNER - remove after verifying push access */}
-      <div style={{ background: '#22c55e', color: 'white', textAlign: 'center', padding: '12px', fontWeight: 'bold' }}>
+      <div style={{ background: '#22c55e', color: 'white', textAlign: 'center', padding: '20px 12px 30px', fontWeight: 'bold', borderRadius: '0 0 50% 50%' }}>
         Hello from Byron! Bluewater Drainage site updates coming soon.
       </div>
 
