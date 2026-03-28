@@ -118,6 +118,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services Overview */}
+      <section className="py-20 bg-gray-light/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            title="Our Services"
+            subtitle="From GPS survey and design through installation and finish work — we handle every step of your drainage project."
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <Link key={service.id} to={`/services#${service.id}`}>
+                <Card hover className="h-full">
+                  <h3 className="text-lg font-bold text-blue-primary">{service.title}</h3>
+                  <p className="mt-2 text-sm text-gray-medium">{service.shortDescription}</p>
+                  <span className="mt-4 inline-block text-sm font-semibold text-orange">
+                    Learn more &rarr;
+                  </span>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* How It Works — Steps to Better Drainage */}
       <section className="py-20 bg-blue-primary text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -131,9 +154,9 @@ export default function Home() {
             <div className="mt-4 h-1 w-16 bg-orange rounded mx-auto" />
           </div>
 
-          <div className="grid gap-0 md:grid-cols-6 relative">
+          <div className="grid gap-0 md:grid-cols-4 relative">
             {/* Connecting line between steps (desktop only) */}
-            <div className="hidden md:block absolute top-12 left-[8.3%] right-[8.3%] h-0.5 bg-white/20 z-0" />
+            <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-white/20 z-0" />
 
             {[
               {
@@ -160,18 +183,8 @@ export default function Home() {
               },
               {
                 step: '3',
-                title: 'GPS Survey & Design',
-                description: 'Precision GPS mapping of your fields to design the optimal drainage layout.',
-                icon: (
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
-                  </svg>
-                ),
-              },
-              {
-                step: '4',
                 title: 'Quote & Plan',
-                description: 'You receive a detailed quote and drainage plan tailored to your farm\'s specific needs.',
+                description: 'You receive a detailed quote and custom drainage design tailored to your farm\'s specific needs.',
                 icon: (
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
@@ -179,22 +192,12 @@ export default function Home() {
                 ),
               },
               {
-                step: '5',
+                step: '4',
                 title: 'Installation',
                 description: 'Our experienced crew installs your tile drainage system with GPS-guided precision.',
                 icon: (
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.049.58.025 1.194-.14 1.743" />
-                  </svg>
-                ),
-              },
-              {
-                step: '6',
-                title: 'Better Yields',
-                description: 'Enjoy drier fields, earlier planting, and stronger harvests — season after season.',
-                icon: (
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
                   </svg>
                 ),
               },
@@ -220,29 +223,6 @@ export default function Home() {
                   </Link>
                 )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Overview */}
-      <section className="py-20 bg-gray-light/30">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="Our Services"
-            subtitle="From GPS survey and design through installation and finish work — we handle every step of your drainage project."
-          />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <Link key={service.id} to={`/services#${service.id}`}>
-                <Card hover className="h-full">
-                  <h3 className="text-lg font-bold text-blue-primary">{service.title}</h3>
-                  <p className="mt-2 text-sm text-gray-medium">{service.shortDescription}</p>
-                  <span className="mt-4 inline-block text-sm font-semibold text-orange">
-                    Learn more &rarr;
-                  </span>
-                </Card>
-              </Link>
             ))}
           </div>
         </div>
