@@ -19,149 +19,23 @@ export default function Home() {
       />
       <StructuredData />
 
-      {/* 3D Drainage tile pipe divider — realistic side profile with water pouring out */}
-      <div style={{ position: 'relative', background: 'transparent', lineHeight: 0, overflow: 'visible' }}>
-        <svg
-          viewBox="0 0 1440 200"
-          preserveAspectRatio="xMidYMid meet"
-          style={{ width: '100%', height: '120px', display: 'block', overflow: 'visible' }}
-        >
-          <defs>
-            {/* 3D cylindrical body gradient — realistic light hitting from above */}
-            <linearGradient id="pipeBody3d" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#555" />
-              <stop offset="8%" stopColor="#484848" />
-              <stop offset="20%" stopColor="#383838" />
-              <stop offset="40%" stopColor="#252525" />
-              <stop offset="60%" stopColor="#1a1a1a" />
-              <stop offset="80%" stopColor="#111" />
-              <stop offset="95%" stopColor="#0d0d0d" />
-              <stop offset="100%" stopColor="#1a1a1a" />
-            </linearGradient>
-            {/* Glossy highlight strip along the top */}
-            <linearGradient id="topGloss" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="white" stopOpacity="0.3" />
-              <stop offset="50%" stopColor="white" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="white" stopOpacity="0" />
-            </linearGradient>
-            {/* Corrugated rib pattern — repeating grooves and ridges */}
-            <pattern id="ribPattern" x="0" y="0" width="18" height="120" patternUnits="userSpaceOnUse">
-              {/* Deep groove */}
-              <rect x="0" y="0" width="7" height="120" fill="rgba(0,0,0,0.25)" />
-              {/* Rib left edge highlight */}
-              <rect x="7" y="0" width="2" height="120" fill="rgba(255,255,255,0.07)" />
-              {/* Rib body */}
-              <rect x="9" y="0" width="6" height="120" fill="rgba(0,0,0,0.05)" />
-              {/* Rib right edge shadow */}
-              <rect x="15" y="0" width="3" height="120" fill="rgba(0,0,0,0.12)" />
-            </pattern>
-            {/* Pipe opening — concentric ring gradient */}
-            <radialGradient id="pipeHole" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#050505" />
-              <stop offset="40%" stopColor="#0a0a0a" />
-              <stop offset="70%" stopColor="#181818" />
-              <stop offset="85%" stopColor="#252525" />
-              <stop offset="100%" stopColor="#333" />
-            </radialGradient>
-            {/* Water body gradient */}
-            <linearGradient id="waterBody" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2563eb" stopOpacity="0.9" />
-              <stop offset="40%" stopColor="#3b82f6" stopOpacity="0.8" />
-              <stop offset="70%" stopColor="#60a5fa" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.3" />
-            </linearGradient>
-            {/* Water shine */}
-            <linearGradient id="waterShine" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="white" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="white" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="white" stopOpacity="0" />
-            </linearGradient>
-            {/* Drop shadow */}
-            <filter id="shadow3d" x="-2%" y="-5%" width="104%" height="130%">
-              <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000" floodOpacity="0.5" />
-            </filter>
-            {/* Soft blur for water mist */}
-            <filter id="waterMist">
-              <feGaussianBlur stdDeviation="2" />
-            </filter>
-          </defs>
-
-          {/* === PIPE BODY === */}
-          <g filter="url(#shadow3d)">
-            {/* Main pipe cylinder — extends past left edge, ends at right with opening */}
-            <rect x="-20" y="30" width="1340" height="100" rx="50" ry="50" fill="url(#pipeBody3d)" />
-
-            {/* Corrugated rib overlay */}
-            <rect x="-20" y="30" width="1340" height="100" rx="50" ry="50" fill="url(#ribPattern)" />
-
-            {/* Top glossy highlight — catches the light */}
-            <ellipse cx="660" cy="42" rx="650" ry="12" fill="url(#topGloss)" />
-
-            {/* Subtle bottom reflection */}
-            <ellipse cx="660" cy="118" rx="600" ry="6" fill="rgba(255,255,255,0.03)" />
-          </g>
-
-          {/* === PIPE OPENING (right end) === */}
-          <g>
-            {/* Outer pipe wall ring */}
-            <ellipse cx="1320" cy="80" rx="52" ry="52" fill="#222" />
-            {/* Corrugated outer ring detail */}
-            <ellipse cx="1320" cy="80" rx="50" ry="50" fill="#2a2a2a" stroke="#1a1a1a" strokeWidth="3" />
-            {/* Inner wall thickness ring */}
-            <ellipse cx="1320" cy="80" rx="44" ry="44" fill="#1e1e1e" />
-            {/* Dark hollow interior */}
-            <ellipse cx="1320" cy="80" rx="38" ry="38" fill="url(#pipeHole)" />
-            {/* Concentric corrugation rings inside */}
-            <ellipse cx="1320" cy="80" rx="34" ry="34" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
-            <ellipse cx="1320" cy="80" rx="28" ry="28" fill="none" stroke="#151515" strokeWidth="1" />
-            <ellipse cx="1320" cy="80" rx="22" ry="22" fill="none" stroke="#121212" strokeWidth="0.8" />
-            {/* Light catching the top lip of the opening */}
-            <path d="M1272,58 Q1320,48 1368,58" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
-            {/* Shadow on bottom lip */}
-            <path d="M1278,104 Q1320,114 1362,104" fill="none" stroke="rgba(0,0,0,0.3)" strokeWidth="2" />
-          </g>
-
-          {/* === WATER POURING OUT === */}
-          <g>
-            {/* Water inside the pipe opening — pooled at bottom */}
-            <ellipse cx="1320" cy="92" rx="30" ry="12" fill="#2563eb" opacity="0.5" />
-            <ellipse cx="1320" cy="90" rx="25" ry="8" fill="#3b82f6" opacity="0.4" />
-
-            {/* Main water stream — pours out and falls down with gravity */}
-            <path
-              d="M1305,98 Q1310,105 1312,120 Q1314,145 1310,170 Q1308,185 1305,200"
-              fill="none" stroke="#2563eb" strokeWidth="12" strokeLinecap="round" opacity="0.7"
-            />
-            <path
-              d="M1320,100 Q1325,115 1325,135 Q1324,160 1320,185 L1318,200"
-              fill="none" stroke="#3b82f6" strokeWidth="10" strokeLinecap="round" opacity="0.6"
-            />
-            <path
-              d="M1335,96 Q1338,108 1338,125 Q1336,150 1332,175 L1330,200"
-              fill="none" stroke="#2563eb" strokeWidth="8" strokeLinecap="round" opacity="0.5"
-            />
-
-            {/* Water shine/reflection on streams */}
-            <path
-              d="M1315,105 Q1318,120 1318,140 Q1316,160 1314,180"
-              fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="3" strokeLinecap="round"
-            />
-            <path
-              d="M1326,108 Q1328,125 1327,145"
-              fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round"
-            />
-
-            {/* Splashing droplets falling */}
-            <circle cx="1300" cy="175" r="3" fill="#60a5fa" opacity="0.5" />
-            <circle cx="1340" cy="180" r="2.5" fill="#3b82f6" opacity="0.4" />
-            <circle cx="1295" cy="190" r="2" fill="#93c5fd" opacity="0.4" />
-            <circle cx="1345" cy="195" r="2" fill="#60a5fa" opacity="0.3" />
-            <circle cx="1310" cy="192" r="1.5" fill="#93c5fd" opacity="0.3" />
-
-            {/* Misty spray near the opening */}
-            <ellipse cx="1320" cy="110" rx="20" ry="8" fill="#93c5fd" opacity="0.1" filter="url(#waterMist)" />
-          </g>
-        </svg>
+      {/* Black corrugated tile banner — full width */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+          background: '#1a1a1a',
+          backgroundImage: 'repeating-linear-gradient(90deg, rgba(0,0,0,0.3) 0px, rgba(0,0,0,0.3) 6px, rgba(60,60,60,0.4) 6px, rgba(60,60,60,0.4) 8px, rgba(40,40,40,0.2) 8px, rgba(40,40,40,0.2) 16px)',
+          color: 'white',
+          textAlign: 'center',
+          padding: '14px 12px',
+          fontWeight: 'bold',
+          fontSize: '0.95rem',
+          letterSpacing: '0.5px',
+          textShadow: '0 1px 3px rgba(0,0,0,0.8)',
+          borderBottom: '2px solid #111',
+          borderTop: '1px solid #333',
+        }}>
+          Hello from Byron! Bluewater Drainage site updates coming soon.
+        </div>
       </div>
 
       {/* Hero with video background */}
