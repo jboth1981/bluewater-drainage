@@ -19,100 +19,147 @@ export default function Home() {
       />
       <StructuredData />
 
-      {/* 3D Drainage tile pipe divider — side profile with water */}
-      <div style={{ position: 'relative', background: 'transparent', lineHeight: 0 }}>
+      {/* 3D Drainage tile pipe divider — realistic side profile with water pouring out */}
+      <div style={{ position: 'relative', background: 'transparent', lineHeight: 0, overflow: 'visible' }}>
         <svg
-          viewBox="0 0 1600 80"
-          preserveAspectRatio="none"
-          style={{ width: '100%', height: '60px', display: 'block' }}
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="xMidYMid meet"
+          style={{ width: '100%', height: '120px', display: 'block', overflow: 'visible' }}
         >
           <defs>
-            {/* 3D cylindrical shading — light on top, dark on bottom */}
-            <linearGradient id="pipeBody" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#4a4a4a" />
-              <stop offset="15%" stopColor="#3a3a3a" />
-              <stop offset="30%" stopColor="#2a2a2a" />
-              <stop offset="50%" stopColor="#1a1a1a" />
-              <stop offset="75%" stopColor="#111" />
-              <stop offset="100%" stopColor="#0a0a0a" />
+            {/* 3D cylindrical body gradient — realistic light hitting from above */}
+            <linearGradient id="pipeBody3d" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#555" />
+              <stop offset="8%" stopColor="#484848" />
+              <stop offset="20%" stopColor="#383838" />
+              <stop offset="40%" stopColor="#252525" />
+              <stop offset="60%" stopColor="#1a1a1a" />
+              <stop offset="80%" stopColor="#111" />
+              <stop offset="95%" stopColor="#0d0d0d" />
+              <stop offset="100%" stopColor="#1a1a1a" />
             </linearGradient>
-            {/* Top highlight shine */}
-            <linearGradient id="pipeShine" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="white" stopOpacity="0.25" />
-              <stop offset="30%" stopColor="white" stopOpacity="0.05" />
+            {/* Glossy highlight strip along the top */}
+            <linearGradient id="topGloss" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="white" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="white" stopOpacity="0.08" />
               <stop offset="100%" stopColor="white" stopOpacity="0" />
             </linearGradient>
-            {/* Rib shading — makes each rib look rounded */}
-            <linearGradient id="ribShade" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="white" stopOpacity="0.08" />
-              <stop offset="50%" stopColor="white" stopOpacity="0.03" />
-              <stop offset="100%" stopColor="black" stopOpacity="0.15" />
-            </linearGradient>
-            {/* Water gradient */}
-            <linearGradient id="waterFlow" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.7" />
+            {/* Corrugated rib pattern — repeating grooves and ridges */}
+            <pattern id="ribPattern" x="0" y="0" width="18" height="120" patternUnits="userSpaceOnUse">
+              {/* Deep groove */}
+              <rect x="0" y="0" width="7" height="120" fill="rgba(0,0,0,0.25)" />
+              {/* Rib left edge highlight */}
+              <rect x="7" y="0" width="2" height="120" fill="rgba(255,255,255,0.07)" />
+              {/* Rib body */}
+              <rect x="9" y="0" width="6" height="120" fill="rgba(0,0,0,0.05)" />
+              {/* Rib right edge shadow */}
+              <rect x="15" y="0" width="3" height="120" fill="rgba(0,0,0,0.12)" />
+            </pattern>
+            {/* Pipe opening — concentric ring gradient */}
+            <radialGradient id="pipeHole" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#050505" />
+              <stop offset="40%" stopColor="#0a0a0a" />
+              <stop offset="70%" stopColor="#181818" />
+              <stop offset="85%" stopColor="#252525" />
+              <stop offset="100%" stopColor="#333" />
+            </radialGradient>
+            {/* Water body gradient */}
+            <linearGradient id="waterBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#2563eb" stopOpacity="0.9" />
+              <stop offset="40%" stopColor="#3b82f6" stopOpacity="0.8" />
+              <stop offset="70%" stopColor="#60a5fa" stopOpacity="0.6" />
               <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.3" />
             </linearGradient>
-            {/* Drop shadow under pipe */}
-            <filter id="pipeShadow" x="-2%" y="-10%" width="104%" height="140%">
-              <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#000" floodOpacity="0.4" />
+            {/* Water shine */}
+            <linearGradient id="waterShine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="white" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="white" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+            {/* Drop shadow */}
+            <filter id="shadow3d" x="-2%" y="-5%" width="104%" height="130%">
+              <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000" floodOpacity="0.5" />
+            </filter>
+            {/* Soft blur for water mist */}
+            <filter id="waterMist">
+              <feGaussianBlur stdDeviation="2" />
             </filter>
           </defs>
 
-          {/* Main pipe body — full width, cylindrical shape */}
-          <g filter="url(#pipeShadow)">
-            {/* Pipe shape — a rounded rectangle representing side profile */}
-            <rect x="0" y="12" width="1420" height="48" rx="24" ry="24" fill="url(#pipeBody)" />
+          {/* === PIPE BODY === */}
+          <g filter="url(#shadow3d)">
+            {/* Main pipe cylinder — extends past left edge, ends at right with opening */}
+            <rect x="-20" y="30" width="1340" height="100" rx="50" ry="50" fill="url(#pipeBody3d)" />
 
-            {/* Corrugated ribs — evenly spaced along the pipe */}
-            {Array.from({ length: 88 }).map((_, i) => {
-              const x = 16 + i * 16
-              return (
-                <g key={i}>
-                  {/* Groove shadow */}
-                  <line x1={x} y1="14" x2={x} y2="58" stroke="#000" strokeWidth="2.5" opacity="0.3" />
-                  {/* Rib highlight */}
-                  <line x1={x + 1.5} y1="14" x2={x + 1.5} y2="58" stroke="#555" strokeWidth="1" opacity="0.2" />
-                </g>
-              )
-            })}
+            {/* Corrugated rib overlay */}
+            <rect x="-20" y="30" width="1340" height="100" rx="50" ry="50" fill="url(#ribPattern)" />
 
-            {/* Glossy highlight on top of pipe */}
-            <rect x="0" y="12" width="1420" height="20" rx="24" ry="12" fill="url(#pipeShine)" />
+            {/* Top glossy highlight — catches the light */}
+            <ellipse cx="660" cy="42" rx="650" ry="12" fill="url(#topGloss)" />
 
-            {/* Pipe opening at right end — dark ellipse */}
-            <ellipse cx="1420" cy="36" rx="12" ry="24" fill="#0a0a0a" />
-            <ellipse cx="1420" cy="36" rx="10" ry="20" fill="#1a1a1a" />
-            <ellipse cx="1420" cy="36" rx="7" ry="15" fill="#0e0e0e" />
+            {/* Subtle bottom reflection */}
+            <ellipse cx="660" cy="118" rx="600" ry="6" fill="rgba(255,255,255,0.03)" />
           </g>
 
-          {/* Water flowing out the right end */}
+          {/* === PIPE OPENING (right end) === */}
           <g>
-            {/* Main water stream */}
+            {/* Outer pipe wall ring */}
+            <ellipse cx="1320" cy="80" rx="52" ry="52" fill="#222" />
+            {/* Corrugated outer ring detail */}
+            <ellipse cx="1320" cy="80" rx="50" ry="50" fill="#2a2a2a" stroke="#1a1a1a" strokeWidth="3" />
+            {/* Inner wall thickness ring */}
+            <ellipse cx="1320" cy="80" rx="44" ry="44" fill="#1e1e1e" />
+            {/* Dark hollow interior */}
+            <ellipse cx="1320" cy="80" rx="38" ry="38" fill="url(#pipeHole)" />
+            {/* Concentric corrugation rings inside */}
+            <ellipse cx="1320" cy="80" rx="34" ry="34" fill="none" stroke="#1a1a1a" strokeWidth="1.5" />
+            <ellipse cx="1320" cy="80" rx="28" ry="28" fill="none" stroke="#151515" strokeWidth="1" />
+            <ellipse cx="1320" cy="80" rx="22" ry="22" fill="none" stroke="#121212" strokeWidth="0.8" />
+            {/* Light catching the top lip of the opening */}
+            <path d="M1272,58 Q1320,48 1368,58" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
+            {/* Shadow on bottom lip */}
+            <path d="M1278,104 Q1320,114 1362,104" fill="none" stroke="rgba(0,0,0,0.3)" strokeWidth="2" />
+          </g>
+
+          {/* === WATER POURING OUT === */}
+          <g>
+            {/* Water inside the pipe opening — pooled at bottom */}
+            <ellipse cx="1320" cy="92" rx="30" ry="12" fill="#2563eb" opacity="0.5" />
+            <ellipse cx="1320" cy="90" rx="25" ry="8" fill="#3b82f6" opacity="0.4" />
+
+            {/* Main water stream — pours out and falls down with gravity */}
             <path
-              d="M1420,38 Q1460,40 1490,48 Q1520,56 1560,62 Q1580,66 1600,68"
-              fill="none"
-              stroke="url(#waterFlow)"
-              strokeWidth="6"
-              strokeLinecap="round"
-              opacity="0.8"
+              d="M1305,98 Q1310,105 1312,120 Q1314,145 1310,170 Q1308,185 1305,200"
+              fill="none" stroke="#2563eb" strokeWidth="12" strokeLinecap="round" opacity="0.7"
             />
-            {/* Thinner stream overlay for shine */}
             <path
-              d="M1422,36 Q1458,37 1488,44 Q1518,52 1555,58"
-              fill="none"
-              stroke="#93c5fd"
-              strokeWidth="2"
-              strokeLinecap="round"
-              opacity="0.5"
+              d="M1320,100 Q1325,115 1325,135 Q1324,160 1320,185 L1318,200"
+              fill="none" stroke="#3b82f6" strokeWidth="10" strokeLinecap="round" opacity="0.6"
             />
-            {/* Water droplets */}
-            <circle cx="1560" cy="65" r="3" fill="#60a5fa" opacity="0.6" />
-            <circle cx="1545" cy="60" r="2" fill="#93c5fd" opacity="0.5" />
-            <circle cx="1575" cy="70" r="2.5" fill="#3b82f6" opacity="0.4" />
-            {/* Small splash at pipe mouth */}
-            <ellipse cx="1428" cy="42" rx="6" ry="3" fill="#60a5fa" opacity="0.3" />
+            <path
+              d="M1335,96 Q1338,108 1338,125 Q1336,150 1332,175 L1330,200"
+              fill="none" stroke="#2563eb" strokeWidth="8" strokeLinecap="round" opacity="0.5"
+            />
+
+            {/* Water shine/reflection on streams */}
+            <path
+              d="M1315,105 Q1318,120 1318,140 Q1316,160 1314,180"
+              fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="3" strokeLinecap="round"
+            />
+            <path
+              d="M1326,108 Q1328,125 1327,145"
+              fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round"
+            />
+
+            {/* Splashing droplets falling */}
+            <circle cx="1300" cy="175" r="3" fill="#60a5fa" opacity="0.5" />
+            <circle cx="1340" cy="180" r="2.5" fill="#3b82f6" opacity="0.4" />
+            <circle cx="1295" cy="190" r="2" fill="#93c5fd" opacity="0.4" />
+            <circle cx="1345" cy="195" r="2" fill="#60a5fa" opacity="0.3" />
+            <circle cx="1310" cy="192" r="1.5" fill="#93c5fd" opacity="0.3" />
+
+            {/* Misty spray near the opening */}
+            <ellipse cx="1320" cy="110" rx="20" ry="8" fill="#93c5fd" opacity="0.1" filter="url(#waterMist)" />
           </g>
         </svg>
       </div>
