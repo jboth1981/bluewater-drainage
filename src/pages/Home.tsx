@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* TEST BANNER - remove after verifying push access */}
       <div style={{ background: '#22c55e', color: 'white', textAlign: 'center', padding: '12px', fontWeight: 'bold' }}>
-        Hello from Kara! Bluewater Drainage site updates coming soon.
+        Hello from Byron! Bluewater Drainage site updates coming soon.
       </div>
 
       {/* Hero with video background */}
