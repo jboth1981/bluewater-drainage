@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* TEST BANNER - remove after verifying push access */}
       <div style={{ background: '#22c55e', color: 'white', textAlign: 'center', padding: '12px', fontWeight: 'bold' }}>
-        Test push successful! This banner confirms GitHub Pages deployment is working.
+        Test #2 - Push pipeline verified! Ready to build.
       </div>
 
       {/* Hero with video background */}
