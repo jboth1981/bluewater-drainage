@@ -19,6 +19,11 @@ export default function Home() {
       />
       <StructuredData />
 
+      {/* TEST BANNER - remove after verifying push access */}
+      <div style={{ background: '#22c55e', color: 'white', textAlign: 'center', padding: '12px', fontWeight: 'bold' }}>
+        Test push successful! This banner confirms GitHub Pages deployment is working.
+      </div>
+
       {/* Hero with video background */}
       <section className="relative bg-blue-primary text-white overflow-hidden">
         <video
