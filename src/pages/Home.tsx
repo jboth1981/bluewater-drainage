@@ -118,6 +118,113 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works — Steps to Better Drainage */}
+      <section className="py-20 bg-blue-primary text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold md:text-4xl">
+              Your Path to Better Yields
+            </h2>
+            <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
+              From first call to finished field — here's how we help you unlock your land's full potential.
+            </p>
+            <div className="mt-4 h-1 w-16 bg-orange rounded mx-auto" />
+          </div>
+
+          <div className="grid gap-0 md:grid-cols-6 relative">
+            {/* Connecting line between steps (desktop only) */}
+            <div className="hidden md:block absolute top-12 left-[8.3%] right-[8.3%] h-0.5 bg-white/20 z-0" />
+
+            {[
+              {
+                step: '1',
+                title: 'Contact Us',
+                description: 'Reach out for a free, no-obligation conversation about your land and goals.',
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
+                ),
+                hasLink: true,
+              },
+              {
+                step: '2',
+                title: 'Farm Assessment',
+                description: 'We visit your property to evaluate soil conditions, topography, and problem areas.',
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                ),
+              },
+              {
+                step: '3',
+                title: 'GPS Survey & Design',
+                description: 'Precision GPS mapping of your fields to design the optimal drainage layout.',
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
+                  </svg>
+                ),
+              },
+              {
+                step: '4',
+                title: 'Quote & Plan',
+                description: 'You receive a detailed quote and drainage plan tailored to your farm\'s specific needs.',
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                  </svg>
+                ),
+              },
+              {
+                step: '5',
+                title: 'Installation',
+                description: 'Our experienced crew installs your tile drainage system with GPS-guided precision.',
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.049.58.025 1.194-.14 1.743" />
+                  </svg>
+                ),
+              },
+              {
+                step: '6',
+                title: 'Better Yields',
+                description: 'Enjoy drier fields, earlier planting, and stronger harvests — season after season.',
+                icon: (
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                  </svg>
+                ),
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative z-10 flex flex-col items-center text-center px-3 py-4">
+                {/* Step circle with icon */}
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-orange text-white shadow-lg mb-4">
+                  {item.icon}
+                </div>
+                {/* Step number */}
+                <span className="text-xs font-bold text-orange uppercase tracking-wider mb-1">Step {item.step}</span>
+                {/* Title */}
+                <h3 className="text-base font-bold mb-2">{item.title}</h3>
+                {/* Description */}
+                <p className="text-sm text-white/70 leading-relaxed">{item.description}</p>
+                {/* Contact link on step 1 */}
+                {item.hasLink && (
+                  <Link to="/contact" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-orange hover:text-orange/80 transition-colors">
+                    Get in touch
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Overview */}
       <section className="py-20 bg-gray-light/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
