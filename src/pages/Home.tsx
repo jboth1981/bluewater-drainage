@@ -19,59 +19,102 @@ export default function Home() {
       />
       <StructuredData />
 
-      {/* Drainage tile banner */}
-      <div style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* 3D Drainage tile pipe divider — side profile with water */}
+      <div style={{ position: 'relative', background: 'transparent', lineHeight: 0 }}>
         <svg
-          viewBox="0 0 1440 90"
+          viewBox="0 0 1600 80"
           preserveAspectRatio="none"
-          style={{ width: '100%', height: '80px', display: 'block' }}
+          style={{ width: '100%', height: '60px', display: 'block' }}
         >
           <defs>
-            {/* Corrugated drainage tile pattern — alternating ribs */}
-            <pattern id="tileRibs" x="0" y="0" width="16" height="90" patternUnits="userSpaceOnUse">
-              {/* Deep groove */}
-              <rect x="0" y="0" width="6" height="90" fill="#1a1a1a" />
-              {/* Raised rib with highlight */}
-              <rect x="6" y="0" width="10" height="90" fill="#2d2d2d" />
-              {/* Subtle shine on rib edge */}
-              <rect x="6" y="0" width="2" height="90" fill="#3a3a3a" />
-              {/* Perforations — small holes in the grooves */}
-              <circle cx="3" cy="30" r="1.2" fill="#111" />
-              <circle cx="3" cy="60" r="1.2" fill="#111" />
-            </pattern>
-            {/* Curved clip for the swooping bottom edge */}
-            <clipPath id="swoopClip">
-              <path d="M0,0 L1440,0 L1440,55 Q720,100 0,55 Z" />
-            </clipPath>
+            {/* 3D cylindrical shading — light on top, dark on bottom */}
+            <linearGradient id="pipeBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#4a4a4a" />
+              <stop offset="15%" stopColor="#3a3a3a" />
+              <stop offset="30%" stopColor="#2a2a2a" />
+              <stop offset="50%" stopColor="#1a1a1a" />
+              <stop offset="75%" stopColor="#111" />
+              <stop offset="100%" stopColor="#0a0a0a" />
+            </linearGradient>
+            {/* Top highlight shine */}
+            <linearGradient id="pipeShine" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="white" stopOpacity="0.25" />
+              <stop offset="30%" stopColor="white" stopOpacity="0.05" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+            {/* Rib shading — makes each rib look rounded */}
+            <linearGradient id="ribShade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="white" stopOpacity="0.08" />
+              <stop offset="50%" stopColor="white" stopOpacity="0.03" />
+              <stop offset="100%" stopColor="black" stopOpacity="0.15" />
+            </linearGradient>
+            {/* Water gradient */}
+            <linearGradient id="waterFlow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.3" />
+            </linearGradient>
+            {/* Drop shadow under pipe */}
+            <filter id="pipeShadow" x="-2%" y="-10%" width="104%" height="140%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#000" floodOpacity="0.4" />
+            </filter>
           </defs>
-          {/* Black tile background with ribs, clipped to swoop shape */}
-          <g clipPath="url(#swoopClip)">
-            <rect width="1440" height="90" fill="url(#tileRibs)" />
-            {/* Subtle top highlight like light catching the pipe */}
-            <rect width="1440" height="2" fill="#444" opacity="0.4" />
-            {/* Subtle bottom shadow for depth */}
-            <line x1="0" y1="54" x2="1440" y2="54" stroke="#000" strokeWidth="1.5" opacity="0.5" />
+
+          {/* Main pipe body — full width, cylindrical shape */}
+          <g filter="url(#pipeShadow)">
+            {/* Pipe shape — a rounded rectangle representing side profile */}
+            <rect x="0" y="12" width="1420" height="48" rx="24" ry="24" fill="url(#pipeBody)" />
+
+            {/* Corrugated ribs — evenly spaced along the pipe */}
+            {Array.from({ length: 88 }).map((_, i) => {
+              const x = 16 + i * 16
+              return (
+                <g key={i}>
+                  {/* Groove shadow */}
+                  <line x1={x} y1="14" x2={x} y2="58" stroke="#000" strokeWidth="2.5" opacity="0.3" />
+                  {/* Rib highlight */}
+                  <line x1={x + 1.5} y1="14" x2={x + 1.5} y2="58" stroke="#555" strokeWidth="1" opacity="0.2" />
+                </g>
+              )
+            })}
+
+            {/* Glossy highlight on top of pipe */}
+            <rect x="0" y="12" width="1420" height="20" rx="24" ry="12" fill="url(#pipeShine)" />
+
+            {/* Pipe opening at right end — dark ellipse */}
+            <ellipse cx="1420" cy="36" rx="12" ry="24" fill="#0a0a0a" />
+            <ellipse cx="1420" cy="36" rx="10" ry="20" fill="#1a1a1a" />
+            <ellipse cx="1420" cy="36" rx="7" ry="15" fill="#0e0e0e" />
+          </g>
+
+          {/* Water flowing out the right end */}
+          <g>
+            {/* Main water stream */}
+            <path
+              d="M1420,38 Q1460,40 1490,48 Q1520,56 1560,62 Q1580,66 1600,68"
+              fill="none"
+              stroke="url(#waterFlow)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              opacity="0.8"
+            />
+            {/* Thinner stream overlay for shine */}
+            <path
+              d="M1422,36 Q1458,37 1488,44 Q1518,52 1555,58"
+              fill="none"
+              stroke="#93c5fd"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            {/* Water droplets */}
+            <circle cx="1560" cy="65" r="3" fill="#60a5fa" opacity="0.6" />
+            <circle cx="1545" cy="60" r="2" fill="#93c5fd" opacity="0.5" />
+            <circle cx="1575" cy="70" r="2.5" fill="#3b82f6" opacity="0.4" />
+            {/* Small splash at pipe mouth */}
+            <ellipse cx="1428" cy="42" rx="6" ry="3" fill="#60a5fa" opacity="0.3" />
           </g>
         </svg>
-        {/* Banner text overlay */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingBottom: '15px',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '0.95rem',
-          textShadow: '0 1px 3px rgba(0,0,0,0.8)',
-          letterSpacing: '0.5px',
-        }}>
-          Hello from Byron! Bluewater Drainage site updates coming soon.
-        </div>
       </div>
 
       {/* Hero with video background */}
